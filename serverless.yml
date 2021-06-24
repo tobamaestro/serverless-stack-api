@@ -10,6 +10,8 @@ plugins:
   - serverless-offline
   - serverless-dotenv-plugin # Load .env as environment variables
 
+useDotenv: true
+
 provider:
   name: aws
   runtime: nodejs12.x
@@ -20,13 +22,14 @@ provider:
   # the following line. Also, make sure to not
   # commit your .env.
   #
+
   environment:
     tableName: notes
     # AWS_REGION: ${env:AWS_REGION}
 
   # 'iamRoleStatements' defines the permission policy for the Lambda function.
   # In this case Lambda functions are granted with permissions to access DynamoDB.
-  iamRoleStatements:
+  iam.role.statements:
     Effect: Allow
     Action:
       - dynamodb:Scan
